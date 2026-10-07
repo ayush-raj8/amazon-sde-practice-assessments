@@ -47,11 +47,12 @@ If you only ask for answers, you are practicing the wrong skill.
 
 ## Recommended practice order
 
-1. **01-movies-search** — fielded simple search + multi-filter AND (classic)
-2. **02-bookstore-inventory** — CRUD + list filters
-3. **03-task-manager** — status filters + persistence bugs
-4. **04-employee-directory** — search / sort / department filter
-5. **05-recipe-finder** — multi-ingredient AND + diet + cook-time bounds
+1. **00-django-crud-tutorial** — settings.py + URL tracing + two-app CRUD (start here if new to Django)
+2. **01-movies-search** — fielded simple search + multi-filter AND (classic)
+3. **02-bookstore-inventory** — CRUD + list filters
+4. **03-task-manager** — status filters + persistence bugs
+5. **04-employee-directory** — search / sort / department filter
+6. **05-recipe-finder** — multi-ingredient AND + diet + cook-time bounds
 
 ## Debugging checklist (use every time)
 
@@ -89,6 +90,7 @@ if g:
 
 | Challenge | Solo target |
 |-----------|-------------|
+| CRUD tutorial | 35–45 min |
 | Movies | 45–60 min |
 | Bookstore | 40–50 min |
 | Task manager | 40–50 min |
@@ -101,6 +103,7 @@ If stuck >15 minutes, use the coach for **process**, not the patch.
 
 | Challenge | API | UI |
 |-----------|-----|----|
+| 00-django-crud-tutorial | 8005 | 5178 |
 | 01-movies-search | 8000 | 5173 |
 | 02-bookstore-inventory | 8001 | 5174 |
 | 03-task-manager | 8002 | 5175 |

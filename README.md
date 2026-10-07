@@ -1,6 +1,7 @@
 # NM2 — Amazon SDE-1 Practice Assessments (Django + React)
 
-Five self-contained coding challenges modeled on Amazon-style AI-assisted assessments.
+Six self-contained coding challenges modeled on Amazon-style AI-assisted assessments
+(including a Django CRUD tutorial with **one project / two apps**).
 
 Each challenge ships with:
 
@@ -27,6 +28,7 @@ Full practice guidance: **[CANDIDATE_GUIDE.md](./CANDIDATE_GUIDE.md)**
 
 | # | Folder | Theme | Ports (API / UI) |
 |---|--------|-------|------------------|
+| 0 | `challenges/00-django-crud-tutorial` | CRUD tutorial (1 project, 2 apps) | 8005 / 5178 |
 | 1 | `challenges/01-movies-search` | Simple + advanced movie search | 8000 / 5173 |
 | 2 | `challenges/02-bookstore-inventory` | Bookstore CRUD + filters | 8001 / 5174 |
 | 3 | `challenges/03-task-manager` | Tasks, status, due dates | 8002 / 5175 |

@@ -6,6 +6,7 @@ Defect summaries live in each challenge’s `.coach/challenge_meta.json`.
 
 | Challenge | Expectation |
 |-----------|-------------|
+| 00-django-crud-tutorial | Campus update / events club filter / cancel URL wiring fail |
 | 01-movies-search | Several search tests fail (field ignored; advanced OR) |
 | 02-bookstore-inventory | Price update / category / author search fail |
 | 03-task-manager | Status filter / mark_complete / due_before fail |

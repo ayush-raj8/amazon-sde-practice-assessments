@@ -2,6 +2,11 @@
 
 High-level only — enough to validate a fix without shipping a full patch key in the candidate tree.
 
+## 00-django-crud-tutorial
+- Persist `campus` on club update.
+- Apply `club` query filter on events list (`club_id=` / `club=`).
+- Wire `events/<pk>/cancel/` to `cancel_event` (not `event_detail`).
+
 ## 01-movies-search
 - **Simple:** branch on `field`; use `Q` OR across title/director/description/cast when `all`.
 - **Advanced:** start from `all()` and **chain** `.filter(...)` per provided dimension (AND), not `|=` on `Q`.
