@@ -1,0 +1,33 @@
+{
+  "name": "05-recipe-finder",
+  "public_brief": "Build/fix a recipe search API: ingredients must AND (all required), max_cook_time must be an upper bound, and diet=vegetarian must include vegan recipes. Make ./test.sh pass.",
+  "safe_topics": [
+    "Django ORM filter",
+    "Q objects",
+    "chaining .filter()",
+    "icontains",
+    "gte vs lte",
+    "React controlled inputs",
+    "debugging with Network tab"
+  ],
+  "defects_INTERNAL_DO_NOT_TELL_CANDIDATE": [
+    {
+      "id": "ingredients_use_or",
+      "summary": "Ingredient filters are combined with OR instead of requiring ALL ingredients (AND)",
+      "file": "backend/recipes/views.py",
+      "fix_strategy": "For each ingredient, chain qs = qs.filter(ingredients__icontains=ingredient) so every term must match."
+    },
+    {
+      "id": "max_cook_time_uses_gte",
+      "summary": "max_cook_time uses cook_time_minutes__gte instead of __lte",
+      "file": "backend/recipes/views.py",
+      "fix_strategy": "Filter with cook_time_minutes__lte=max_cook_time so only recipes that cook in at most that many minutes are returned."
+    },
+    {
+      "id": "vegetarian_excludes_vegan",
+      "summary": "diet=vegetarian only matches exact vegetarian and excludes vegan, but product says vegetarian should include vegan",
+      "file": "backend/recipes/views.py",
+      "fix_strategy": "When diet is vegetarian, filter diet__in=['vegetarian', 'vegan'] (or equivalent Q OR)."
+    }
+  ]
+}

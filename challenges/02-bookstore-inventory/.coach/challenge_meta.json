@@ -1,0 +1,33 @@
+{
+  "name": "02-bookstore-inventory",
+  "public_brief": "Build/fix a bookstore inventory API: update must persist price; list must filter by category; search q must match title OR author. Make ./test.sh pass.",
+  "safe_topics": [
+    "Django ORM filter",
+    "Q objects",
+    "request.GET",
+    "iexact / icontains",
+    "DRF serializers partial update",
+    "React controlled inputs",
+    "debugging with Network tab"
+  ],
+  "defects_INTERNAL_DO_NOT_TELL_CANDIDATE": [
+    {
+      "id": "update_ignores_price",
+      "summary": "update_book updates title/author/isbn/category/stock but silently ignores price even when sent",
+      "file": "backend/books/views.py",
+      "fix_strategy": "Assign book.price from request data (with Decimal/validation) before save, same as other fields."
+    },
+    {
+      "id": "category_filter_unused",
+      "summary": "list_books reads `category` query param but never applies it to the queryset",
+      "file": "backend/books/views.py",
+      "fix_strategy": "When category is non-empty, filter with category__iexact for case-insensitive exact match."
+    },
+    {
+      "id": "search_title_only",
+      "summary": "list_books search `q` only filters title__icontains, not author",
+      "file": "backend/books/views.py",
+      "fix_strategy": "Use Q(title__icontains=q) | Q(author__icontains=q) so either field matches."
+    }
+  ]
+}

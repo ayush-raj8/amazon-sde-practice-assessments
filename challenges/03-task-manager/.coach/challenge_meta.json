@@ -1,0 +1,33 @@
+{
+  "name": "03-task-manager",
+  "public_brief": "Build/fix a task manager API: list filters must respect status, priority, and due_before; mark_complete must persist done status. Make ./test.sh pass.",
+  "safe_topics": [
+    "Django ORM filter",
+    "request.GET",
+    "Model.save",
+    "date lookups (__lte / __gte)",
+    "DRF api_view",
+    "React controlled inputs",
+    "debugging with Network tab"
+  ],
+  "defects_INTERNAL_DO_NOT_TELL_CANDIDATE": [
+    {
+      "id": "status_filter_not_applied",
+      "summary": "status is read from query params but never applied to the queryset (returns all statuses)",
+      "file": "backend/tasks/views.py",
+      "fix_strategy": "When status is provided, chain .filter(status=status) on the queryset before serializing."
+    },
+    {
+      "id": "mark_complete_missing_save",
+      "summary": "mark_complete sets task.status = \"done\" but forgets task.save(), so the change is not persisted",
+      "file": "backend/tasks/views.py",
+      "fix_strategy": "Call task.save() after assigning status (or use update_fields=['status'])."
+    },
+    {
+      "id": "due_before_uses_gte",
+      "summary": "due_before filter incorrectly uses due_date__gte instead of due_date__lte",
+      "file": "backend/tasks/views.py",
+      "fix_strategy": "Filter with due_date__lte=due_before (and exclude null due dates if desired by product)."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "01-movies-search",
+  "public_brief": "Build/fix a movie search API: simple search must respect the selected field; advanced search must AND all provided filters. Make ./test.sh pass.",
+  "safe_topics": [
+    "Django ORM filter",
+    "Q objects",
+    "request.GET",
+    "icontains",
+    "React controlled inputs",
+    "debugging with Network tab"
+  ],
+  "defects_INTERNAL_DO_NOT_TELL_CANDIDATE": [
+    {
+      "id": "simple_search_ignores_field",
+      "summary": "simple_search always filters title__icontains regardless of `field` query param",
+      "file": "backend/movies/views.py",
+      "fix_strategy": "Branch on field (all/title/director/description/cast) and apply the matching lookup; for all, OR across fields with Q."
+    },
+    {
+      "id": "advanced_search_uses_or",
+      "summary": "advanced_search ORs filter dimensions instead of ANDing them",
+      "file": "backend/movies/views.py",
+      "fix_strategy": "Start from Movie.objects.all() and chain .filter() for each provided dimension so all must match."
+    }
+  ]
+}

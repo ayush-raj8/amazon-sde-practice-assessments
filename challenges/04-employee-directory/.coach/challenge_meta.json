@@ -1,0 +1,33 @@
+{
+  "name": "04-employee-directory",
+  "public_brief": "Build/fix an employee directory API: department filter, name search, and sort must match the product spec. Make ./test.sh pass.",
+  "safe_topics": [
+    "Django ORM filter",
+    "iexact",
+    "icontains",
+    "order_by",
+    "request.GET",
+    "React controlled inputs",
+    "debugging with Network tab"
+  ],
+  "defects_INTERNAL_DO_NOT_TELL_CANDIDATE": [
+    {
+      "id": "department_filter_ignored",
+      "summary": "department query param is read but never applied to the queryset",
+      "file": "backend/employees/views.py",
+      "fix_strategy": "When department is non-empty, filter with department__iexact=department."
+    },
+    {
+      "id": "name_search_exact_match",
+      "summary": "q uses exact match name=q instead of name__icontains",
+      "file": "backend/employees/views.py",
+      "fix_strategy": "When q is non-empty, filter with name__icontains=q."
+    },
+    {
+      "id": "sort_ignored_orders_by_id",
+      "summary": "sort param is ignored; queryset always orders by id",
+      "file": "backend/employees/views.py",
+      "fix_strategy": "Honor sort=name|department (default name) via order_by('name') or order_by('department', 'name')."
+    }
+  ]
+}
